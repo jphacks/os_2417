@@ -32,11 +32,12 @@ class WordHistory {
 
     historyView() {
         // 'error'のエントリを除いて表示する
+        console.log(this.history)
         this.div1.innerHTML = ''; // 以前の内容をクリア
         this.div2.innerHTML = ''; // 以前の内容をクリア
 
         this.history.forEach((meaning, word) => {
-            if (meaning !== 'error') { // 'error'を除外
+            if (meaning !== 'error'&&meaning !== '説明が見つかりませんでした。') { // 'error'を除外
                 const wordElement = document.createElement('div');
                 wordElement.textContent = word;
                 this.div1.appendChild(wordElement);

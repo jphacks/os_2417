@@ -78,4 +78,35 @@ class KuromojiAnalyzer {
       }
     }
   }
+
+  class Controler {
+    constructor(textarea, p) {
+      this.textarea = textarea;
+      this.p = p;
+      this.update = false;
+      this.kuromojiAnalyzer = new KuromojiAnalyzer();
+    }
+  
+    setupdate() {
+      this.update = true;
+    }
+  
+    analysis() {
+      if (this.kuromojiAnalyzer.isProcessing) {
+        this.setupdate(); // 処理中の場合はupdateフラグを立てる
+        return;
+      }
+      this.kuromojiAnalyzer.analysisView(this.p, this.textarea.value, () => {
+        if (this.update) { // 処理終了時にupdateがtrueなら再実行
+          this.update = false;
+          this.analysis();
+        }
+      });
+    }
+
+    getKuromojiAnalyzer(){
+        return this.kuromojiAnalyzer;
+      }
+  }
+  
   

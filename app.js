@@ -22,5 +22,7 @@ const historydec = document.getElementById('historydec')
 const wordHistory = new WordHistory(history,historydec);
 
 const updatehistory = () => {
-  wordHistory.setHistory(controler.)
+  console.log(textarea.value);
+  wordHistory.setHistory(controler.getKuromojiAnalyzer().analysisNoun(textarea.value))
+  wordHistory.historyView()
 }
