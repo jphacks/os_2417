@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>音声文字起こし</title>
-</head>
-<body>
-  <h1>リアルタイム音声文字起こし</h1>
-  <button id="start-btn">録音開始</button>
-  <button id="stop-btn" disabled>録音停止</button>
-  <p id="transcription"></p>
-  <button id="mojikaiseki">解析する</button>
-  <p id="analysis"></p>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="shortcut icon"
+      type="image/vnd.microsoft.icon"
+      href="favicon.ico"
+    />
+    <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
+    <link href="style.css" rel="stylesheet" type="text/css" media="all" />
+    <link
+      href="https://fonts.googleapis.com/earlyaccess/nikukyu.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ユーズミー</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="productName">ユーズミー</h1>
+    </div>
 
-  <script src="./kuromoji.js"></script>
+    <script src="./kuromoji.js"></script>
 
-  <script src="app.js"></script>
-</body>
+    <script src="app.js"></script>
+  </body>
 </html>
