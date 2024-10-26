@@ -19,8 +19,8 @@ def pullMeaning(word):
 
     # metaタグのdescriptionを抽出
     meta_description = soup.find('meta', attrs={'name': 'description'})
-
     if meta_description:
         print("Meta Description:", meta_description.get('content'))
+        return meta_description.get('content')
     else:
         print("Meta Descriptionが見つかりませんでした。HTML構造を確認してください。")
