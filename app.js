@@ -14,3 +14,13 @@ const speechRecognitionHandler = new SpeechRecognitionHandler(textarea, controle
 i.addEventListener('click', () => {
     speechRecognitionHandler.action(); // 音声認識の開始または停止を切り替える
 });
+
+//履歴
+const history = document.getElementById('history');
+const historydec = document.getElementById('historydec')
+
+const wordHistory = new WordHistory(history,historydec);
+
+const updatehistory = () => {
+  wordHistory.setHistory(controler.)
+}
