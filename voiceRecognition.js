@@ -32,7 +32,7 @@ class SpeechRecognitionHandler {
                 }
             }
             // 最終結果と中間結果を合成して表示
-            this.textarea.innerHTML = this.fullTranscript + interimTranscript;
+            this.textarea.value = this.fullTranscript + interimTranscript;
             this.controller.analysis(); // 解析を呼び出す
         };
         
