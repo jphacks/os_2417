@@ -60,7 +60,7 @@ body {
   width: 40vw;
   height: 20vh;
   padding: 5px;
-  font-size: 1.3rem;
+  font-size: 24px;
   font-weight: 500;
   position: relative;
   opacity: 0.8;
@@ -73,6 +73,8 @@ body {
   height: 20vh;
   padding: 5px;
   opacity: 0.8;
+  font-size: 24px;
+  overflow: scroll;
 }
 .form {
   margin-top: 10px;
