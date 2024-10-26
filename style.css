@@ -1,0 +1,60 @@
+@charset "utf-8";
+body {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(#baf3ff, #ffffff);
+  margin: 0;
+  padding: 0;
+}
+.productName {
+  font-family: "Nikukyu";
+  color: #2942d3;
+  padding: 1vh 3vw;
+  font-size: 2.5rem;
+}
+.history {
+  display: flex;
+}
+.history view {
+  padding: 3vw;
+  border: 0.5vw solid #000000;
+  background: #ffffff;
+  opacity: 0.5;
+  width: 5vw;
+  height: 6vw;
+  margin: 3vw;
+}
+.history dec {
+  padding: 3vw;
+  border: 1vw solid #000000;
+  background: #ffffff;
+  opacity: 0.5;
+  width: vw;
+  height: 6vw;
+  margin: 3vw;
+}
+.input {
+  border: 1px solid #ffffff;
+  background-color: #b0ebfd;
+  resize: none;
+  margin-left: 5vw;
+  width: 40vw;
+  height: 20vh;
+  padding: 5px;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.output {
+  border: 1px solid #ffffff;
+  background-color: #b0ebfd;
+  margin-right: 5vw;
+  width: 40vw;
+  height: 20vh;
+  padding: 5px;
+}
+.form {
+  margin-top: 8vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
