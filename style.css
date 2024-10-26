@@ -5,6 +5,7 @@ body {
   background: linear-gradient(#baf3ff, #ffffff);
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 .productName {
   font-family: "Nikukyu";
@@ -15,23 +16,26 @@ body {
 .history {
   display: flex;
 }
-.history view {
+
+.view {
   padding: 3vw;
-  border: 0.5vw solid #000000;
-  background: #ffffff;
+  border: 0.25vw solid #000000;
+  background-color: #ffffff;
   opacity: 0.5;
-  width: 5vw;
-  height: 6vw;
-  margin: 3vw;
+  width: 30vw;
+  height: 20vw;
+  margin: 1vw 3vw;
+  margin-left: 5vw;
 }
-.history dec {
+.historydec {
   padding: 3vw;
-  border: 1vw solid #000000;
-  background: #ffffff;
+  border: 0.25vw solid #000000;
+  background-color: #ffffff;
   opacity: 0.5;
-  width: vw;
-  height: 6vw;
-  margin: 3vw;
+  width: 70vw;
+  height: 20vw;
+  margin: 1vw 3vw;
+  margin-right: 5vw;
 }
 .input {
   border: 1px solid #ffffff;
@@ -43,6 +47,7 @@ body {
   padding: 5px;
   font-size: 1.3rem;
   font-weight: 500;
+  position: relative;
 }
 .output {
   border: 1px solid #ffffff;
@@ -57,4 +62,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#microphone {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 17vh;
+  left: 6vw;
+}
+.inputContainer {
+  position: relative;
 }
