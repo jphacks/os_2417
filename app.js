@@ -76,36 +76,8 @@ recognition.onerror = (event) => {
 };
 
 //kuromoji.js
-const DICT_PATH = "./dict";
-const POS_COLORS = {
-  "名詞": "blue",
-  "動詞": "green",
-  "形容詞": "red",
-  "副詞": "purple",
-  "助詞": "orange",
-  "助動詞": "pink",
-  "記号": "gray",
-  "その他": "black"
-};
-
+const analyzer = new KuromojiAnalyzer();
 testBtn.addEventListener('click', () => {
-  console.log('解析');
-  analysis.innerHTML = ''; // 解析結果の表示領域をクリア
-  kuromoji.builder({ dicPath: DICT_PATH }).build((_err, tokenizer) => {
-    const tokens = tokenizer.tokenize(fullTranscript); // 解析データの取得
-    tokens.forEach((token) => {
-      const surface = token.surface_form;  // 表層形
-      const pos = token.pos;  // 品詞
-      const color = POS_COLORS[pos] || POS_COLORS["その他"];  // 品詞に対応する色を取得
-
-      // 色付きの単語を作成し、解析結果に追加
-      const wordSpan = document.createElement('span');
-      wordSpan.textContent = surface;
-      wordSpan.style.color = color;
-      analysis.appendChild(wordSpan);
-
-      // スペースを追加して見やすくする
-    //   analysis.appendChild(document.createTextNode(' '));
-    });
-  });
+  analyzer.analysisView(analysis);
+  console.log(analyzer.analysisNoun(fullTranscript));
 });
