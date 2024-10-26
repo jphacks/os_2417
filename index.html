@@ -7,6 +7,10 @@
       type="image/vnd.microsoft.icon"
       href="favicon.ico"
     />
+    <script
+      src="https://kit.fontawesome.com/c17fcdad8d.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
     <link href="style.css" rel="stylesheet" type="text/css" media="all" />
     <link
@@ -22,30 +26,27 @@
       <div class="form">
         <div class="inputContainer">
           <textarea
-          type="text"
-          id="input"
-          name="input"
-          placeholder="翻訳"
-          class="input"
-          
-        ></textarea>
+            type="text"
+            id="input"
+            name="input"
+            placeholder="翻訳"
+            class="input"
+          ></textarea>
+          <i class="fa-solid fa-microphone" id="microphone"></i>
         </div>
         <div>
           <p class="output"></p>
         </div>
-      
       </div>
 
       <div class="history">
-       <div class="history view">
-        <p>履歴</p>
-        <ul>
-          <li></li>
-        </ul>
+        <div class="view">
+          <p>履歴</p>
+        </div>
+        <div class="historydec">
+          <p>履歴の説明</p>
+        </div>
       </div>
-       <div class="history dec">
-       </div>
-
     </div>
 
     <script src="./kuromoji.js"></script>
