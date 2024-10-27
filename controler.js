@@ -21,7 +21,7 @@ class Controler {
             this.setupdate();
             return;
         }
-        this.kuromojiAnalyzer.analysisView(this.p, this.textarea.value, () => {
+        this.kuromojiAnalyzer.analysisView(this.p, this.textarea.value, this.wordHistory.getITWordHistory(), () => {
             if (this.update) {
                 this.update = false;
                 this.analysis();

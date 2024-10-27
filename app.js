@@ -19,7 +19,9 @@ i.addEventListener('click', () => {
     speechRecognitionHandler.action(); // 音声認識の開始または停止を切り替える
 });
 
-
+const updateView = () => {
+  console.log(controler.wordHistory.ITWordhistory);
+}
 // const updatehistory = () => {
 //   console.log(textarea.value);
 //   wordHistory.setHistory(controler.getKuromojiAnalyzer().analysisNoun(textarea.value))

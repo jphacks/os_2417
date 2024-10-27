@@ -28,39 +28,46 @@ class KuromojiAnalyzer {
       return this.nounHistory;
   }
 
-  analysisView(analysis, fullTranscript, callback) {
-      if (this.isProcessing) {
-          callback && callback(); // コールバックを実行して再呼び出しを知らせる
-          return;
-      }
-      this.isProcessing = true;
+  analysisView(analysis, fullTranscript, ITWordMap, callback) {
+    if (this.isProcessing) {
+        callback && callback(); // コールバックを実行して再呼び出しを知らせる
+        return;
+    }
+    this.isProcessing = true;
 
-      if (this.tokenizer) {
-          const tokens = this.tokenizer.tokenize(fullTranscript);
+    if (this.tokenizer) {
+        const tokens = this.tokenizer.tokenize(fullTranscript);
 
-          const fragment = document.createDocumentFragment();
-          tokens.forEach((token) => {
-              const pos = token.pos;
-              const color = this.POS_COLORS[pos] || this.POS_COLORS["その他"];
+        const fragment = document.createDocumentFragment();
+        tokens.forEach((token) => {
+            const pos = token.pos;
+            const color = this.POS_COLORS[pos] || this.POS_COLORS["その他"];
 
-              if (pos === '名詞' && !this.nounHistory.includes(token.surface_form)) {
-                  this.nounHistory.push(token.surface_form);
-              }
+            if (pos === '名詞' && !this.nounHistory.includes(token.surface_form)) {
+                this.nounHistory.push(token.surface_form);
+            }
 
-              const wordSpan = document.createElement('span');
-              wordSpan.textContent = token.surface_form;
-              wordSpan.style.color = color;
-              fragment.appendChild(wordSpan);
-          });
+            // ITWordMapによる置き換え
+            let surfaceForm = token.surface_form
+            if (ITWordMap.has(surfaceForm)) {
+              surfaceForm = ITWordMap.get(surfaceForm);
+            }
 
-          analysis.innerHTML = '';
-          analysis.appendChild(fragment);
+            const wordSpan = document.createElement('span');
+            wordSpan.textContent = surfaceForm; // 置き換えた単語を設定
+            wordSpan.style.color = color;
+            fragment.appendChild(wordSpan);
+        });
 
-          this.isProcessing = false;
-          callback && callback();
-      } else {
-          console.error("トークナイザーがビルドされていません");
-          this.isProcessing = false;
-      }
-  }
+        analysis.innerHTML = '';
+        analysis.appendChild(fragment);
+
+        this.isProcessing = false;
+        callback && callback();
+    } else {
+        console.error("トークナイザーがビルドされていません");
+        this.isProcessing = false;
+    }
+}
+
 }
