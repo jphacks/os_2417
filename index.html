@@ -7,6 +7,10 @@
       type="image/vnd.microsoft.icon"
       href="favicon.ico"
     />
+    <script
+      src="https://kit.fontawesome.com/c17fcdad8d.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" />
     <link href="style.css" rel="stylesheet" type="text/css" media="all" />
     <link
@@ -17,39 +21,45 @@
     <title>ユーズミー</title>
   </head>
   <body>
+    <img src="./publics/icon2.png" alt="ユーズミー" class="iconImage" />
     <div class="container">
       <h1 class="productName">ユーズミー</h1>
+
       <div class="form">
         <div class="inputContainer">
+          <p style="margin-left: 6vw">ITワードが入った文章</p>
           <textarea
-          type="text"
-          id="input"
-          name="input"
-          placeholder="翻訳"
-          class="input"
-          
-        ></textarea>
+            type="text"
+            id="input"
+            name="input"
+            placeholder="翻訳"
+            class="input"
+          ></textarea>
+          <i class="fa-solid fa-microphone" id="microphone"></i>
         </div>
+
         <div>
-          <p class="output"></p>
+          <p style="margin-left: 1vw; margin-top: 2vw">わかりやすい文章</p>
+          <p class="output" id="output"></p>
         </div>
-      
       </div>
 
       <div class="history">
-       <div class="history view">
-        <p>履歴</p>
-        <ul>
-          <li></li>
-        </ul>
+        <div class="view" id="history">
+          <p>履歴</p>
+        </div>
+        <div class="historydec" id="historydec">
+          <p>履歴の説明</p>
+        </div>
       </div>
-       <div class="history dec">
-       </div>
-
     </div>
 
     <script src="./kuromoji.js"></script>
-
+    <script src="kuromojiAnalyzer.js"></script>
+    <script src="controler.js"></script>
+    <script src="voiceRecognition.js"></script>
+    <script src="gpt.js"></script>
+    <script src="history.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

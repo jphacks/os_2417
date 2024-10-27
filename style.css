@@ -5,34 +5,56 @@ body {
   background: linear-gradient(#baf3ff, #ffffff);
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
+
 .productName {
   font-family: "Nikukyu";
   color: #2942d3;
-  padding: 1vh 3vw;
+  padding: 0 3vw;
   font-size: 2.5rem;
+  -webkit-text-stroke: 0.25px #ffffff;
 }
 .history {
   display: flex;
+  margin-top: 3vh;
 }
-.history view {
-  padding: 3vw;
-  border: 0.5vw solid #000000;
-  background: #ffffff;
+
+.view {
+  padding: 1vw;
+
+  border: 0.25vw solid #000000;
+  background-color: #ffffff;
   opacity: 0.5;
-  width: 5vw;
-  height: 6vw;
-  margin: 3vw;
+  width: 30vw;
+  height: 20vw;
+  margin: 1vw 3vw;
+  margin-left: 5vw;
+  overflow: scroll;
 }
-.history dec {
-  padding: 3vw;
-  border: 1vw solid #000000;
-  background: #ffffff;
+.view p {
+  margin-top: 0vw;
+}
+.historydec {
+  padding: 1vw;
+  border: 0.25vw solid #000000;
+  background-color: #ffffff;
   opacity: 0.5;
-  width: vw;
-  height: 6vw;
-  margin: 3vw;
+  width: 70vw;
+  height: 20vw;
+  margin: 1vw 3vw;
+  margin-right: 5vw;
+  overflow: scroll;
 }
+.historydec p {
+  margin-top: 0vw;
+}
+.scroll-text {
+  font-size: 24px;
+  animation: colorChange linear both;
+  animation-timeline: scroll();
+}
+
 .input {
   border: 1px solid #ffffff;
   background-color: #b0ebfd;
@@ -41,8 +63,10 @@ body {
   width: 40vw;
   height: 20vh;
   padding: 5px;
-  font-size: 1.3rem;
+  font-size: 24px;
   font-weight: 500;
+  position: relative;
+  opacity: 0.8;
 }
 .output {
   border: 1px solid #ffffff;
@@ -51,10 +75,39 @@ body {
   width: 40vw;
   height: 20vh;
   padding: 5px;
+  opacity: 0.8;
+  font-size: 24px;
+  overflow: scroll;
 }
 .form {
-  margin-top: 8vh;
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+#microphone {
+  font-size: 1.5rem;
+  position: absolute;
+  top: 24vh;
+  left: 6vw;
+}
+.inputContainer {
+  position: relative;
+}
+.middleList {
+  display: flex;
+  list-style: none;
+  align-items: stretch;
+  text-align: center;
+}
+.iconImage {
+  mix-blend-mode: multiply;
+  text-align: center;
+  z-index: -1;
+  position: absolute;
+  top: 11vh;
+  left: 25vw;
+}
+span{
+  margin: 10px;
 }
