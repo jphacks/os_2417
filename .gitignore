@@ -32,3 +32,5 @@ Thumbs.db   # Windows
 *.cache
 
 test
+
+gpt.js
