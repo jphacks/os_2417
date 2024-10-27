@@ -1,4 +1,5 @@
-const sendQuery = (word, key) => {
+const Key='APIキー';
+const sendQuery = (word, key=Key) => {
   const endpoint = "https://api.openai.com/v1/chat/completions";
   const model = "gpt-3.5-turbo";
   const messages = [
@@ -33,5 +34,39 @@ const sendQuery = (word, key) => {
     });
   return result;
 };
-//APIキーをここに！
-console.log(sendQuery("API", apikeyhere));
+
+const ReplacingSentences = (word, key=Key) => {
+  const endpoint = "https://api.openai.com/v1/chat/completions";
+  const model = "gpt-3.5-turbo";
+  const messages = [
+    {
+      role: "system",
+      content:
+        "文章を正しい日本語にして下さい",
+    },
+    {
+      role: "user",
+      content: word,
+    },
+  ];
+  const requestOption = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${key}`,
+    },
+    body: JSON.stringify({
+      model: model,
+      messages: messages,
+      max_tokens: 700, //レスポンスのトークンの最大数
+    }),
+  };
+  const gptRequest = new Request(endpoint, requestOption);
+  const result = fetch(gptRequest)
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err);
+      process.exitCode = 1;
+    });
+  return result;
+};

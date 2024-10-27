@@ -39,11 +39,15 @@ class Controler {
         const nouns = this.kuromojiAnalyzer.analysisNoun();
         this.wordHistory.setHistory(nouns).then(() => {
             this.historyUpdate = false;
+            this.finalAnalysisView(); // 履歴の更新が終わったらfinalAnalysisViewを呼び出す
         });
     }
   
     getKuromojiAnalyzer() {
         return this.kuromojiAnalyzer;
     }
-  }
-  
+
+    finalAnalysisView() {
+        this.kuromojiAnalyzer.finalAnalysis(this.textarea.value, this.wordHistory.getITWordHistory()).then((t)=>this.kuromojiAnalyzer.finalView(this.p, t));
+    }
+}

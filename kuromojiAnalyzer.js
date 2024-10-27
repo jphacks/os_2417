@@ -68,6 +68,34 @@ class KuromojiAnalyzer {
         console.error("トークナイザーがビルドされていません");
         this.isProcessing = false;
     }
+  }
+
+  finalAnalysis(fullTranscript, ITWordMap) {
+    // fullTranscriptの中でITWordMapのキーを対応するvalueに置き換える
+    let transformedText = fullTranscript;
+    ITWordMap.forEach((value, key) => {
+        const regex = new RegExp(key, 'g');
+        transformedText = transformedText.replace(regex, value);
+    });
+    return ReplacingSentences(transformedText)
+            .then(meaning => {
+                if (meaning !== 'error') {
+                  console.log(meaning.choices[0].message.content);
+                  
+                    return meaning.choices[0].message.content;
+                }
+            })
+            .catch(error => {
+                console.error('エラー:', error);
+            });
 }
+
+finalView(analysis, transformedText) {
+    // analysis.innerHTMLに変換後のテキストを設定
+    console.log(transformedText);
+    
+    analysis.innerHTML = transformedText;
+}
+
 
 }
