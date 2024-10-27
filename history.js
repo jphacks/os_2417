@@ -8,36 +8,30 @@ class WordHistory {
     search(word) {
         return fetch(`http://localhost:8080/meaning?word=${encodeURIComponent(word)}`)
             .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    return 'error'; // エラーがある場合、"error"を返す
-                } else {
-                    return data.meaning; // 意味が取得できた場合、それを返す
-                }
-            })
+            .then(data => data.error ? 'error' : data.meaning)
             .catch(error => {
                 console.error('エラー:', error);
-                return 'error'; // 通信エラーの場合も "error" を返す
+                return 'error';
             });
     }
 
     async setHistory(wordArray) {
         for (const word of wordArray) {
             if (!this.history.has(word)) {
-                const meaning = await this.search(word); // 意味の取得を待機
-                this.history.set(word, meaning); // 取得した意味を history に保存
+                const meaning = await this.search(word);
+                this.history.set(word, meaning);
             }
         }
+        this.historyView(); // 全ての単語の処理後に一度だけ呼び出す
     }
 
     historyView() {
-        // 'error'のエントリを除いて表示する
-        console.log(this.history)
-        this.div1.innerHTML = ''; // 以前の内容をクリア
-        this.div2.innerHTML = ''; // 以前の内容をクリア
+        console.log(this.history);
+        this.div1.innerHTML = '';
+        this.div2.innerHTML = '';
 
         this.history.forEach((meaning, word) => {
-            if (meaning !== 'error'&&meaning !== '説明が見つかりませんでした。') { // 'error'を除外
+            if (meaning !== 'error' && meaning !== '説明が見つかりませんでした。') {
                 const wordElement = document.createElement('div');
                 wordElement.textContent = word;
                 this.div1.appendChild(wordElement);
@@ -46,7 +40,6 @@ class WordHistory {
                 meaningElement.textContent = meaning;
                 meaningElement.style.height = 'auto';
                 this.div2.appendChild(meaningElement);
-                // meaningElement の高さが反映された後に wordElement の高さを設定
                 requestAnimationFrame(() => {
                     wordElement.style.height = `${meaningElement.offsetHeight}px`;
                 });
