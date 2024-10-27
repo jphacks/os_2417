@@ -17,6 +17,7 @@ body {
 }
 .history {
   display: flex;
+  margin-top: 3vh;
 }
 
 .view {
@@ -29,6 +30,7 @@ body {
   height: 20vw;
   margin: 1vw 3vw;
   margin-left: 5vw;
+  overflow: scroll;
 }
 .view p {
   margin-top: 0vw;
@@ -42,6 +44,7 @@ body {
   height: 20vw;
   margin: 1vw 3vw;
   margin-right: 5vw;
+  overflow: scroll;
 }
 .historydec p {
   margin-top: 0vw;
