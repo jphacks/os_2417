@@ -44,7 +44,12 @@ class WordHistory {
 
                 const meaningElement = document.createElement('div');
                 meaningElement.textContent = meaning;
+                meaningElement.style.height = 'auto';
                 this.div2.appendChild(meaningElement);
+                // meaningElement の高さが反映された後に wordElement の高さを設定
+                requestAnimationFrame(() => {
+                    wordElement.style.height = `${meaningElement.offsetHeight}px`;
+                });
             }
         });
     }
